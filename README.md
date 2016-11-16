@@ -61,7 +61,7 @@ config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(
 
 Escoja uno de sus dos servidores como responsable del balanceo de carga. En el que corresponda, cree un archivo de configuración para NGINX
 
-1. Cree un archivo de configuración NGINX (por convención, use la extensión .conf), compatible con WebSockets, a partir de la siguiente plantilla. Ajuste la configuración de 'upstream' para que use el host y el puerto de los dos servidores virtuales, y el parámero 'listen' para que escuche en el puerto 8080.
+1. Cree un archivo de configuración NGINX (por convención, use la extensión .conf), compatible con WebSockets, a partir de la siguiente plantilla. Ajuste la configuración de 'upstream' para que use el host y el puerto de los dos servidores virtuales, y el parámero 'listen' para que escuche en el puerto 8090 (o cualquier otro, siempre que sea diferente al usado por la aplicación que está en el mismo servidor).
 
 	```nginx
 	
@@ -116,7 +116,7 @@ Escoja uno de sus dos servidores como responsable del balanceo de carga. En el q
 
 8. Ajuste la aplicación para que la misma no tenga 'quemadas' datos como el host del servidor de mensajería o el puerto. Para esto revise [la discusión hecha en StackOverflow al respecto.](http://stackoverflow.com/questions/30528255/how-to-access-a-value-defined-in-the-application-properties-file-in-spring-boot)
 
-9. Suba en moodle la nueva versión de la aplicación.
+9. Suba en moodle la nueva versión de la aplicación.\\
 
 # Parte 3 (Para el Martes en clase impreso).
 
