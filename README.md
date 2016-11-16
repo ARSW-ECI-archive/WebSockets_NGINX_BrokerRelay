@@ -144,7 +144,7 @@ Escoja uno de sus dos servidores como responsable del balanceo de carga. En el q
 	nginx -c ruta-completa-archivo-configuración
 	```
 
-3. Desde un navegador, abra la URL de la aplicación, pero usando el puerto del balanceador de carga (8080). Verifique el funcionamiento de la aplicación.
+3. Desde un navegador, abra la URL de la aplicación, pero usando el puerto del balanceador de carga (8090). Verifique el funcionamiento de la aplicación.
 4. Revise en la [documentación de NGINX](http://nginx.org/en/docs/http/load_balancing.html), cómo cambiar la estrategía por defecto del balanceador por la estrategia 'least_conn'.
 5. Ejecute de nuevo la aplicación, pero esta vez abriendo la aplicación desde navegadores diferentes (p.e. Chrome y Firefox), y haciendo uso de la misma.
 6. Revise, a través de los LOGs de cada servidor, si se están distribuyendo las peticiones. Revise qué instancia de la aplicación se le está asignando a cada cliente.
