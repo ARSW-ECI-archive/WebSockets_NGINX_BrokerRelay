@@ -116,6 +116,7 @@ Escoja uno de sus dos servidores como responsable del balanceo de carga. En el q
 
 8. Ajuste la aplicación para que la misma no tenga 'quemadas' datos como el host del servidor de mensajería o el puerto. Para esto revise [la discusión hecha en StackOverflow al respecto.](http://stackoverflow.com/questions/30528255/how-to-access-a-value-defined-in-the-application-properties-file-in-spring-boot)
 
+9. Suba en moodle la nueva versión de la aplicación.
 
 # Parte 3 (Para el Martes en clase impreso).
 
