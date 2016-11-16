@@ -52,6 +52,42 @@ config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(
 
 5. Modifique el manejador de los eventos interceptados por la aplicación (los que empiezan con /app), para que muestre por consola un mensaje cada vez que se recibe un evento.
 
+6. Agregue las siguientes dependencias al proyecto:
+
+	```
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-amqp</artifactId>            
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>2.0.8.RELEASE</version>
+        </dependency>    
+
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-net</artifactId>
+            <version>2.0.8.RELEASE</version>
+        </dependency>    
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>4.0.42.Final</version>
+        </dependency>                                
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <version>4.0.42.Final</version>
+        </dependency>                                
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>4.0.42.Final</version>
+        </dependency>
+	```
+
 6. Copie la aplicación a los dos servidores virtuales (puede usar ssh, o publicarla en un repositorio GIT y luego clonarla desde cada máquina).
 7. En cada máquina ejecute la aplicación, y desde el navegador (en la máquina real) verifique que las dos aplicaciones funcionen correctamente (usando las respectivas direcciones IP).
 8. Al haber usado la aplicación, consulte nuevamente la consola Web de ActiveMQ, y revise qué información de tópicos se ha mostrado.
