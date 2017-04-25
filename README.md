@@ -8,20 +8,42 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 
 # Parte 0 - Entorno virtual
 
-1. Verfique que tenga acceso al servidor Ubuntu 14, disponible en una máquina virtual de VirtualBox.
+1. Importe la máquina virtual suministrada (extensión .ova).
+2. Antes de iniciar la máquina virtual, configure las redes de VirtualBox (File/Preferences/Network). Si no está configurada, agregue una red NAT (NatNework) y otra red Host-only Network (vboxnet0)
 
-2. Inicie la máquina virtual y autentíquese con   ubuntu / reverse .
-3. Verifique que la máquina tenga salida a Internet. Para esto, haga PING a un servidor desde la máquina virtual.
-4. Verifique que la máquina virtual sea accesible desde la máquina real. Revise la dirección IP (la que empieza con 192.168.) de la máquina virtual (comando ifconfig), e intente hacer ping desde la máquina real a dicha dirección.
-5. Apague la máquina virtual (shutdown -P 0), y ahora cree un clon de la misma (clic-derecho sobre la máquina virtual  / Clone). Haga un clonado de tipo 'Linked Clone'.
-6. Inicie la nueva máquina virtual, y una vez autenticado, modifique el archivo de configuración de red (/etc/network/interfaces) para asignarle una IP diferente a la de la máquina original (por ejemplo, 192.168.56.20).
-7. Inicie ambas máquinas y verifique que queden con sus respectivas direcciones, y que sean accesibles.
+![](img/Selection_007.png)
+![](img/Selection_008.png)
+
+3. Configure la máquina virtual (Settings/Network) y configure dos adaptadores de red. El primero de tipo 'Host-only' (asociado a la red vboxnet0), y el segundo de tipo NAT-Network (asociado a la red (NatNetwork).
+
+![](img/Selection_011.png)
+![](img/Selection_012.png)
+
+3. Inicie la máquina virtual y autentíquese con   ubuntu / reverse .
+
+4. Configure la máquina virtual para que active el segundo adaptador de red. Para eso, en la máquina virtual edite el archivo /etc/network/interfaces y agregue:
+
+	```text
+auth eth1
+iface eth1 inet dhcp
+	```
+	
+3. Reinicie la máquina y verifique que la máquina tenga salida a Internet. Para esto, haga PING a un servidor desde la máquina virtual.
+
+4. Verifique que la máquina virtual sea accesible desde la máquina real. Revise la dirección IP (la que empieza con 192.168.56.) de la máquina virtual (comando ifconfig), e intente hacer ping desde la máquina real a dicha dirección. 
+
+5. Apague la máquina virtual (sudo shutdown -P 0), y ahora cree un clon de la misma (clic-derecho sobre la máquina virtual  / Clone). No olvide elegir la opción de reiniciar la dirección MAC de los adaptadores de red, y haga un clonado de tipo 'Linked Clone'. Una vez clonado, rectifique que los adaptadores de red de la nueva máquina virtual tiene direcciones MAC diferentes a la máquina original.
+
+7. Inicie ambas máquinas y verifique que queden con sus respectivas direcciones, y que éstas sean accesibles. Una vez verificado esto, puede conectarse a las máquinas virtuales a través de ssh (para no tener que usar la terminal de la máquina virtual):
+
+	```text
+ssh ubuntu@192.168.56.XX
+	```
 
 # Parte 1
 
 1. En uno de los dos servidores virtuales, inicie el servidor ActiveMQ. Para esto, ubíquese en el directorio apache-activemq-5.14.1/bin (en el directorio raíz del usuario 'ubuntu'), y ejecute ./activemq start .
-2. Para verificar que el servidor de mensajes esté arriba, abra la consola de administración de ActiveMQ: http://IP_SERVIDOR:8161/admin/ . Consulte qué tópicos han sido creados en el momento.
-
+2. Para verificar que el servidor de mensajes esté arriba, abra la consola de administración de ActiveMQ: http://IP_SERVIDOR:8161/admin/ (usuario/contraseña: admin/admin) . Consulte qué tópicos han sido creados en el momento.
 
 3. Recupere la última versión del ejericio realizado de WebSockets (creación colaborativa de polígonos). Modifíquelo para que en lugar de usar el 'simpleBroker' (un broker de mensajes embebido en la aplicación), delegue el manejo de los eventos a un servidor de mensajería dedicado (en este caso, ActiveMQ).
 
@@ -89,7 +111,9 @@ config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(
 	```
 
 6. Copie la aplicación a los dos servidores virtuales (puede usar ssh, o publicarla en un repositorio GIT y luego clonarla desde cada máquina).
+
 7. En cada máquina ejecute la aplicación, y desde el navegador (en la máquina real) verifique que las dos aplicaciones funcionen correctamente (usando las respectivas direcciones IP).
+
 8. Al haber usado la aplicación, consulte nuevamente la consola Web de ActiveMQ, y revise qué información de tópicos se ha mostrado.
 
 
