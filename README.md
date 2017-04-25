@@ -24,8 +24,8 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 4. Configure la máquina virtual para que active el segundo adaptador de red. Para eso, en la máquina virtual edite el archivo /etc/network/interfaces y agregue:
 
 	```text
-auth eth1
-iface eth1 inet dhcp
+	auth eth1
+	iface eth1 inet dhcp
 	```
 	
 3. Reinicie la máquina y verifique que la máquina tenga salida a Internet. Para esto, haga PING a un servidor desde la máquina virtual.
@@ -37,7 +37,7 @@ iface eth1 inet dhcp
 7. Inicie ambas máquinas y verifique que queden con sus respectivas direcciones, y que éstas sean accesibles. Una vez verificado esto, puede conectarse a las máquinas virtuales a través de ssh (para no tener que usar la terminal de la máquina virtual):
 
 	```text
-ssh ubuntu@192.168.56.XX
+	ssh ubuntu@192.168.56.XX
 	```
 
 # Parte 1
@@ -50,14 +50,14 @@ ssh ubuntu@192.168.56.XX
 	Es decir, en la configuración en lugar de:
 	
 	```java
-config.enableSimpleBroker("/topic");
+	config.enableSimpleBroker("/topic");
 	```
 	
 	Se configurará como:
 
 	```java
-config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(61613);
-```
+	config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(61613);
+	```
 
 	Teniendo en cuenta que el parámetro 'relayHost' deberá tener la IP del host donde esté funcionando el servidor de mensajería.
 	
@@ -65,11 +65,10 @@ config.enableStompBrokerRelay("/topic/").setRelayHost("127.0.0.1").setRelayPort(
 4. Modifique, también en la configuración, el registro del 'endpoint', para que permita mensajes de otros servidores (por defecto sólo acepta de sí mismo). Eso es requerido para permitir el manejo del balanceador de carga:
 
 	```nginx
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();
-        
-    }
+	@Override
+    	public void registerStompEndpoints(StompEndpointRegistry registry) {
+        	registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();        
+	}
 	```
 
 5. Modifique el manejador de los eventos interceptados por la aplicación (los que empiezan con /app), para que muestre por consola un mensaje cada vez que se recibe un evento.
