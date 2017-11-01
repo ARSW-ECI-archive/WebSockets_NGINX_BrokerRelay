@@ -177,7 +177,18 @@ Escoja uno de sus dos servidores como responsable del balanceo de carga. En el q
 
 9. Suba en moodle la nueva versión de la aplicación.\\
 
-# Parte 3 (Para el Martes en clase impreso).
+# Parte 3
+
+En su ejercicio, haga una rama llamada 'cloud-based-mom'. En ésta, configure su aplicación para que en lugar de usar el servidor JMeter, haga uso del servicio en RabbitMQ en la nube de [CloudAMQP](https://www.cloudamqp.com), el cual también es compatible con STOMP. Para esto:
+
+1. Regístrese en la plataforma y cree una instancia gratuita (Lemur).
+2. Abra la consola de configuración, y revise las credenciales de acceso.
+3. Abra el [siguiente ejemplo](https://github.com/hcadavid/SpringBoot_WebSockets_CloudBasedRelay_POC) y revise cómo se configuró el 'relay-broker' para usar el servicio de mensajería de CloudAMQP.
+4. Ejecute la aplicación y revise su funcionamiento. Acceda a la consola de administración de CloudAMQP y revise qué efectivamente se estén creando los tópicos correspondientes.
+5. Consulte 'benchmarks' comparativos entre RabbitMQ y ActiveMQ, y analice cual sería más conveniente.
+
+
+# Parte 4 (Para el Martes en clase impreso).
 
 1. Haga el diagrama de despliegue (incluyendo el detalle de los componentes de cada servidor) para la versión original del laboratorio.
 2. Haga el diagrama de despliegue (incluyendo el detalle de componentes) para la nueva versión del laboratrio. En este caso suponga que los servidores no están en máquinas virtuales sino en máquinas reales.
