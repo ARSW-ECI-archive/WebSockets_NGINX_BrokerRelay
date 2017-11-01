@@ -71,7 +71,7 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 	}
 	```
 
-5. Modifique el manejador de los eventos interceptados por la aplicación (los que empiezan con /app), para que muestre por consola un mensaje cada vez que se recibe un evento.
+<!--5. Modifique el manejador de los eventos interceptados por la aplicación (los que empiezan con /app), para que muestre por consola un mensaje cada vez que se recibe un evento.-->
 
 6. Agregue las siguientes dependencias al proyecto:
 
