@@ -24,7 +24,7 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 4. Configure la máquina virtual para que active el segundo adaptador de red. Para eso, en la máquina virtual edite el archivo /etc/network/interfaces y agregue:
 
 	```text
-	auth eth1
+	auto eth1
 	iface eth1 inet dhcp
 	```
 	
