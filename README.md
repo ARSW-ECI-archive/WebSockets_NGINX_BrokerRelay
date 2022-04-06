@@ -8,7 +8,7 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 
 # Parte 0 - Entorno virtual
 
-1. Importe la máquina virtual suministrada (extensión .ova).
+1. Importe la máquina virtual suministrada (extensión .ova). En caso de estar trabajando remotamente, descárguela de esta [carpeta compartida](https://drive.google.com/drive/folders/1KELI3qhxnlsAz7YmWoIauOAlcnc-O3I8?usp=sharing).
 2. Antes de iniciar la máquina virtual, configure las redes de VirtualBox (File/Preferences/Network). Si no está configurada, agregue una red NAT (NatNework) y otra red Host-only Network (vboxnet0)
 
 ![](img/Selection_007.png)
