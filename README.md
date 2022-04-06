@@ -113,7 +113,10 @@ En este ejercicio va a crear un esquema de balanceo de carga a través de una re
 
 7. En cada máquina ejecute la aplicación, y desde el navegador (en la máquina real) verifique que las dos aplicaciones funcionen correctamente (usando las respectivas direcciones IP).
 
-8. Al haber usado la aplicación, consulte nuevamente la consola Web de ActiveMQ, y revise qué información de tópicos se ha mostrado.
+8. Al haber usado la aplicación, consulte nuevamente la consola Web de 
+
+
+, y revise qué información de tópicos se ha mostrado.
 
 
 # Parte 2
@@ -179,7 +182,7 @@ Escoja uno de sus dos servidores como responsable del balanceo de carga. En el q
 
 # Parte 3
 
-En su ejercicio, haga una rama llamada 'cloud-based-mom'. En ésta, configure su aplicación para que en lugar de usar el servidor JMeter, haga uso del servicio en RabbitMQ en la nube de [CloudAMQP](https://www.cloudamqp.com), el cual también es compatible con STOMP. Para esto:
+En su ejercicio, haga una rama llamada 'cloud-based-mom'. En ésta, configure su aplicación para que en lugar de usar el servidor ActiveMQ, haga uso del servicio en RabbitMQ en la nube de [CloudAMQP](https://www.cloudamqp.com), el cual también es compatible con STOMP. Para esto:
 
 1. Regístrese en la plataforma y cree una instancia gratuita (Lemur).
 2. Abra la consola de configuración, y revise las credenciales de acceso.
